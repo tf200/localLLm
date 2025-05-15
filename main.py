@@ -1,5 +1,5 @@
 import asyncio
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, File, UploadFile, BackgroundTasks
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from sse_starlette.sse import EventSourceResponse
@@ -13,6 +13,9 @@ from typing import List
 from fastapi.exceptions import HTTPException
 import json
 import uuid
+import shutil
+from fastapi.responses import JSONResponse
+from db import prepare_document_for_rag  # Assuming this is the correct import path
 # 1. Initialize FastAPI app
 app = FastAPI()
 
@@ -46,7 +49,7 @@ of all the documents you referenced in your answer. This helps with attribution 
 
 # 4. Initialize your LLM agent
 model = OpenAIModel(
-    "Qwen3-4B",
+    "gemma3-4B",
     provider=OpenAIProvider(base_url="http://localhost:8080/v1"),
 )
 agent = Agent(model=model, system_prompt=system_prompt)
@@ -60,8 +63,8 @@ class QuestionInput(BaseModel):
 async def stream_answer(question: str):
     # Retrieve top-5 docs
     results = collection.query(query_texts=[question], n_results=5)
-    docs = results["documents"][0]
-    metadata = results["metadatas"][0]
+    docs = results["documents"][0] # type: ignore
+    metadata = results["metadatas"][0] # type: ignore
 
     context_with_metadata = []
     for i, (doc, meta) in enumerate(zip(docs, metadata)):
@@ -205,9 +208,48 @@ async def list_files():
         
     except Exception as e:
         error_msg = f"Internal server error in list_files: {str(e)}"
-        print(f"ERROR: {error_msg}")
-        print(f"Exception type: {type(e)._name_}")
-        print(f"Exception args: {e.args}")
-        import traceback
-        print(f"Traceback: {traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=error_msg)
+
+
+@app.post("/upload")
+async def upload_files(files: List[UploadFile] = File(...)):
+    uploaded_files = []
+    total_chunks_processed = 0
+
+    for file in files:
+        if not file.filename:
+            raise HTTPException(status_code=400, detail="Filename is required")
+
+        # Save file to disk
+        file_path = os.path.join("files", file.filename)
+        with open(file_path, "wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
+
+        uploaded_files.append({
+            "filename": file.filename,
+            "path": file_path,
+            "content_type": file.content_type
+        })
+
+        # Embed the uploaded file into ChromaDB
+        try:
+            texts, metadatas = prepare_document_for_rag(file_path)
+            ids = [str(uuid.uuid4()) for _ in texts]
+            if texts:
+                collection.add(documents=texts, metadatas=metadatas, ids=ids) # type: ignore
+                total_chunks_processed += len(texts)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Error embedding {file.filename}: {str(e)}")
+
+    return JSONResponse(
+        content={
+            "message": f"Successfully uploaded and embedded {len(uploaded_files)} file(s)",
+            "chunks_embedded": total_chunks_processed,
+            "files": uploaded_files
+        },
+        status_code=200
+    )
+
+
+
+
