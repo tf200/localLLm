@@ -1,13 +1,12 @@
 import chromadb
 import pdfplumber
-from typing import List, Tuple, Dict, Optional, Union
+from typing import List, Tuple, Dict
 from langchain_text_splitters import CharacterTextSplitter
 import os
-import uuid
+import pytesseract
 import docx
 # For Excel files
 import pandas as pd
-import openpyxl
 # Initialize ChromaDB client and collection
 client = chromadb.PersistentClient(path="db")
 collection = client.get_or_create_collection("Micla")
@@ -22,13 +21,24 @@ def get_file_extension(file_path: str) -> str:
 def extract_text_from_pdf(pdf_path: str) -> List[Tuple[int, str]]:
     """
     Extracts text from each page of the PDF.
+    Falls back to OCR if no text is extracted.
     Returns a list of tuples: (page_number, page_text).
     """
     pages = []
+
     with pdfplumber.open(pdf_path) as pdf:
         for i, page in enumerate(pdf.pages, start=1):
-            text = page.extract_text() or ""
-            pages.append((i, text))
+            text = page.extract_text()
+
+            # If no text found or very short, fallback to OCR
+            if not text or len(text.strip()) < 40:
+                print(f"Page {i}: Falling back to OCR")
+                # Render page to image
+                pil_img = page.to_image(resolution=300).original
+                text = pytesseract.image_to_string(pil_img)
+
+            pages.append((i, text.strip()))
+
     return pages
 
 def extract_text_from_docx(docx_path: str) -> List[Tuple[int, str]]:
