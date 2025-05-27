@@ -1,0 +1,658 @@
+2025-05-26 10:35:44,855 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 10:35:44,857 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 10:35:44,857 - sqlalchemy.engine.Engine - INFO - [generated in 0.00018s] ()
+2025-05-26 10:35:44,858 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 10:37:34,667 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 10:37:34,669 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 10:37:34,669 - sqlalchemy.engine.Engine - INFO - [generated in 0.00016s] ()
+2025-05-26 10:37:34,670 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:38:30,981 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:38:30,982 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:38:30,983 - sqlalchemy.engine.Engine - INFO - [generated in 0.00017s] ()
+2025-05-26 11:38:30,983 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:39:34,246 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:39:34,247 - sqlalchemy.engine.Engine - INFO - INSERT INTO files (id, filename, path, content_type, chunk_count, upload_time) VALUES (?, ?, ?, ?, ?, ?)
+2025-05-26 11:39:34,247 - sqlalchemy.engine.Engine - INFO - [generated in 0.00027s] ('644a4f00604147c8be06476cbb7919e8', '(Bosch Professional Automotive Information) -Bosch Automotive Electrics and Automotive Electronics_ Systems and Components, Networking and Hybrid Drive-Springer Vieweg (2014).pdf', 'files/(Bosch Professional Automotive Information) -Bosch Automotive Electrics and Automotive Electronics_ Systems and Components, Networking and Hybrid Drive-Springer Vieweg (2014).pdf', 'application/octet-stream', 529, '2025-05-26 10:38:23.011220')
+2025-05-26 11:39:34,248 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-26 11:39:38,358 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:39:38,358 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:39:38,359 - sqlalchemy.engine.Engine - INFO - [cached since 67.38s ago] ()
+2025-05-26 11:39:38,360 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:41:58,831 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:41:58,833 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:41:58,833 - sqlalchemy.engine.Engine - INFO - [generated in 0.00018s] ()
+2025-05-26 11:41:58,834 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:42:11,291 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:42:11,291 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:42:11,292 - sqlalchemy.engine.Engine - INFO - [cached since 12.46s ago] ()
+2025-05-26 11:42:11,292 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:42:21,757 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 11:42:21,784 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 11:42:22,013 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:42:22,013 - sqlalchemy.engine.Engine - INFO - INSERT INTO files (id, filename, path, content_type, chunk_count, upload_time) VALUES (?, ?, ?, ?, ?, ?)
+2025-05-26 11:42:22,014 - sqlalchemy.engine.Engine - INFO - [generated in 0.00021s] ('bb112877e40c4c8d8943dcd09354055c', 'Reçu de paiement.pdf', 'files/Reçu de paiement.pdf', 'application/octet-stream', 1, '2025-05-26 10:41:51.466341')
+2025-05-26 11:42:22,014 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-26 11:45:15,221 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:45:15,221 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:45:15,221 - sqlalchemy.engine.Engine - INFO - [cached since 196.4s ago] ()
+2025-05-26 11:45:15,222 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:45:15,225 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:45:15,225 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:45:15,225 - sqlalchemy.engine.Engine - INFO - [cached since 196.4s ago] ()
+2025-05-26 11:45:15,226 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:45:41,287 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 11:45:41,288 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 11:45:41,288 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 11:45:41,948 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 11:45:41,949 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 11:45:41,949 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 11:45:42,002 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:45:42,003 - sqlalchemy.engine.Engine - INFO - INSERT INTO files (id, filename, path, content_type, chunk_count, upload_time) VALUES (?, ?, ?, ?, ?, ?)
+2025-05-26 11:45:42,003 - sqlalchemy.engine.Engine - INFO - [cached since 200s ago] ('c6faa00bd2c24bf99fd9d42b006c76c4', 'CV _latestv2 (1) (1).pdf', 'files/CV _latestv2 (1) (1).pdf', 'application/octet-stream', 2, '2025-05-26 10:41:51.466341')
+2025-05-26 11:45:42,003 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-26 11:45:58,825 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:45:58,825 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:45:58,825 - sqlalchemy.engine.Engine - INFO - [cached since 240s ago] ()
+2025-05-26 11:45:58,826 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:46:10,574 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 11:46:10,599 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 11:46:10,632 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:46:10,633 - sqlalchemy.engine.Engine - INFO - INSERT INTO files (id, filename, path, content_type, chunk_count, upload_time) VALUES (?, ?, ?, ?, ?, ?)
+2025-05-26 11:46:10,633 - sqlalchemy.engine.Engine - INFO - [cached since 228.6s ago] ('a06f7f70a82d4eb4887878d74660a39b', 'Invoice-44D71B1B-0020.pdf', 'files/Invoice-44D71B1B-0020.pdf', 'application/octet-stream', 1, '2025-05-26 10:41:51.466341')
+2025-05-26 11:46:10,634 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-26 11:46:25,117 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:46:25,118 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:46:25,118 - sqlalchemy.engine.Engine - INFO - [cached since 266.3s ago] ()
+2025-05-26 11:46:25,119 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:49:44,247 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:49:44,247 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:49:44,247 - sqlalchemy.engine.Engine - INFO - [cached since 465.4s ago] ()
+2025-05-26 11:49:44,248 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:49:44,855 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:49:44,856 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:49:44,856 - sqlalchemy.engine.Engine - INFO - [cached since 466s ago] ()
+2025-05-26 11:49:44,857 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:49:52,053 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 11:49:52,054 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 11:49:52,119 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 11:49:52,119 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 11:49:52,160 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:49:52,161 - sqlalchemy.engine.Engine - INFO - INSERT INTO files (id, filename, path, content_type, chunk_count, upload_time) VALUES (?, ?, ?, ?, ?, ?)
+2025-05-26 11:49:52,161 - sqlalchemy.engine.Engine - INFO - [cached since 450.1s ago] ('9747c623fc4a4ba5b45c62a2e886e363', 'appointment_card_0.pdf', 'files/appointment_card_0.pdf', 'application/octet-stream', 2, '2025-05-26 10:41:51.466341')
+2025-05-26 11:49:52,161 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-26 11:51:01,588 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:51:01,589 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:51:01,589 - sqlalchemy.engine.Engine - INFO - [cached since 542.8s ago] ()
+2025-05-26 11:51:01,591 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:51:09,807 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:51:09,807 - sqlalchemy.engine.Engine - INFO - INSERT INTO files (id, filename, path, content_type, chunk_count, upload_time) VALUES (?, ?, ?, ?, ?, ?)
+2025-05-26 11:51:09,808 - sqlalchemy.engine.Engine - INFO - [cached since 527.8s ago] ('2b0eba71a2b44e9192e09876c428f984', 'oncf-voyages-taha farjia.pdf', 'files/oncf-voyages-taha farjia.pdf', 'application/octet-stream', 1, '2025-05-26 10:41:51.466341')
+2025-05-26 11:51:09,809 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-26 11:51:09,818 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:51:09,818 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:51:09,818 - sqlalchemy.engine.Engine - INFO - [cached since 551s ago] ()
+2025-05-26 11:51:09,819 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:52:01,966 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:52:01,967 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:52:01,967 - sqlalchemy.engine.Engine - INFO - [cached since 603.1s ago] ()
+2025-05-26 11:52:01,967 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:52:07,660 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:52:07,661 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:52:07,661 - sqlalchemy.engine.Engine - INFO - [cached since 608.8s ago] ()
+2025-05-26 11:52:07,662 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:52:26,960 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:52:26,960 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:52:26,960 - sqlalchemy.engine.Engine - INFO - [cached since 628.1s ago] ()
+2025-05-26 11:52:26,961 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:52:30,621 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:52:30,621 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:52:30,621 - sqlalchemy.engine.Engine - INFO - [cached since 631.8s ago] ()
+2025-05-26 11:52:30,622 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:52:45,456 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:52:45,456 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:52:45,456 - sqlalchemy.engine.Engine - INFO - [cached since 646.6s ago] ()
+2025-05-26 11:52:45,457 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:52:47,054 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:52:47,055 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:52:47,055 - sqlalchemy.engine.Engine - INFO - [cached since 648.2s ago] ()
+2025-05-26 11:52:47,056 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:52:49,799 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:52:49,800 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:52:49,800 - sqlalchemy.engine.Engine - INFO - [cached since 651s ago] ()
+2025-05-26 11:52:49,800 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:52:50,361 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:52:50,361 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:52:50,361 - sqlalchemy.engine.Engine - INFO - [cached since 651.5s ago] ()
+2025-05-26 11:52:50,362 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:52:54,842 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:52:54,842 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:52:54,843 - sqlalchemy.engine.Engine - INFO - [cached since 656s ago] ()
+2025-05-26 11:52:54,843 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:52:56,041 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:52:56,041 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:52:56,042 - sqlalchemy.engine.Engine - INFO - [cached since 657.2s ago] ()
+2025-05-26 11:52:56,043 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:52:56,737 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:52:56,737 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:52:56,737 - sqlalchemy.engine.Engine - INFO - [cached since 657.9s ago] ()
+2025-05-26 11:52:56,738 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:53:06,679 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:53:06,679 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:53:06,679 - sqlalchemy.engine.Engine - INFO - [cached since 667.8s ago] ()
+2025-05-26 11:53:06,680 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:53:07,683 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:53:07,683 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:53:07,684 - sqlalchemy.engine.Engine - INFO - [cached since 668.9s ago] ()
+2025-05-26 11:53:07,684 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:53:09,050 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:53:09,050 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:53:09,050 - sqlalchemy.engine.Engine - INFO - [cached since 670.2s ago] ()
+2025-05-26 11:53:09,051 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:53:10,850 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:53:10,850 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:53:10,850 - sqlalchemy.engine.Engine - INFO - [cached since 672s ago] ()
+2025-05-26 11:53:10,851 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:53:17,613 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:53:17,613 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:53:17,614 - sqlalchemy.engine.Engine - INFO - [cached since 678.8s ago] ()
+2025-05-26 11:53:17,615 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:53:27,342 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:53:27,343 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:53:27,343 - sqlalchemy.engine.Engine - INFO - [cached since 688.5s ago] ()
+2025-05-26 11:53:27,344 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:53:28,761 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:53:28,762 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:53:28,762 - sqlalchemy.engine.Engine - INFO - [cached since 689.9s ago] ()
+2025-05-26 11:53:28,763 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:53:29,088 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:53:29,089 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:53:29,089 - sqlalchemy.engine.Engine - INFO - [cached since 690.3s ago] ()
+2025-05-26 11:53:29,089 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:53:54,284 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:53:54,284 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:53:54,284 - sqlalchemy.engine.Engine - INFO - [cached since 715.5s ago] ()
+2025-05-26 11:53:54,285 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:53:55,613 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:53:55,613 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:53:55,613 - sqlalchemy.engine.Engine - INFO - [cached since 716.8s ago] ()
+2025-05-26 11:53:55,614 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:54:02,893 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:54:02,893 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:54:02,893 - sqlalchemy.engine.Engine - INFO - [cached since 724.1s ago] ()
+2025-05-26 11:54:02,894 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:54:02,896 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:54:02,897 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:54:02,897 - sqlalchemy.engine.Engine - INFO - [cached since 724.1s ago] ()
+2025-05-26 11:54:02,897 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:56:08,516 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:56:08,516 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:56:08,516 - sqlalchemy.engine.Engine - INFO - [cached since 849.7s ago] ()
+2025-05-26 11:56:08,517 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:56:12,182 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:56:12,182 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:56:12,183 - sqlalchemy.engine.Engine - INFO - [cached since 853.4s ago] ()
+2025-05-26 11:56:12,183 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:56:12,847 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:56:12,847 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:56:12,847 - sqlalchemy.engine.Engine - INFO - [cached since 854s ago] ()
+2025-05-26 11:56:12,848 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:56:15,694 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:56:15,694 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:56:15,694 - sqlalchemy.engine.Engine - INFO - [cached since 856.9s ago] ()
+2025-05-26 11:56:15,695 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:56:16,759 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:56:16,759 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:56:16,759 - sqlalchemy.engine.Engine - INFO - [cached since 857.9s ago] ()
+2025-05-26 11:56:16,760 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:56:17,046 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:56:17,046 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:56:17,046 - sqlalchemy.engine.Engine - INFO - [cached since 858.2s ago] ()
+2025-05-26 11:56:17,047 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:59:24,704 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:59:24,704 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:59:24,704 - sqlalchemy.engine.Engine - INFO - [cached since 1046s ago] ()
+2025-05-26 11:59:24,705 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:59:26,336 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:59:26,336 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:59:26,337 - sqlalchemy.engine.Engine - INFO - [cached since 1048s ago] ()
+2025-05-26 11:59:26,337 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:59:41,201 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:59:41,201 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:59:41,201 - sqlalchemy.engine.Engine - INFO - [cached since 1062s ago] ()
+2025-05-26 11:59:41,202 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:59:45,403 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:59:45,404 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:59:45,404 - sqlalchemy.engine.Engine - INFO - [cached since 1067s ago] ()
+2025-05-26 11:59:45,405 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 11:59:51,048 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 11:59:51,049 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 11:59:51,049 - sqlalchemy.engine.Engine - INFO - [cached since 1072s ago] ()
+2025-05-26 11:59:51,050 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:00:02,735 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:00:02,736 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:00:02,736 - sqlalchemy.engine.Engine - INFO - [cached since 1084s ago] ()
+2025-05-26 12:00:02,736 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:00:08,558 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:00:08,558 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files 
+WHERE files.id = ?
+2025-05-26 12:00:08,559 - sqlalchemy.engine.Engine - INFO - [generated in 0.00017s] ('644a4f00604147c8be06476cbb7919e8',)
+2025-05-26 12:00:08,562 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Delete of nonexisting embedding ID: 644a4f00-6041-47c8-be06-476cbb7919e8
+2025-05-26 12:00:08,563 - chromadb.segment.impl.metadata.sqlite - WARNING - Delete of nonexisting embedding ID: 644a4f00-6041-47c8-be06-476cbb7919e8
+2025-05-26 12:00:08,568 - logs.logger - INFO - Deleted file from vector store: (Bosch Professional Automotive Information) -Bosch Automotive Electrics and Automotive Electronics_ Systems and Components, Networking and Hybrid Drive-Springer Vieweg (2014).pdf (ID: 644a4f00-6041-47c8-be06-476cbb7919e8)
+2025-05-26 12:00:08,569 - logs.logger - INFO - Deleted file from filesystem: files/(Bosch Professional Automotive Information) -Bosch Automotive Electrics and Automotive Electronics_ Systems and Components, Networking and Hybrid Drive-Springer Vieweg (2014).pdf
+2025-05-26 12:00:08,570 - sqlalchemy.engine.Engine - INFO - DELETE FROM files WHERE files.id = ?
+2025-05-26 12:00:08,570 - sqlalchemy.engine.Engine - INFO - [generated in 0.00015s] ('644a4f00604147c8be06476cbb7919e8',)
+2025-05-26 12:00:08,571 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-26 12:00:08,579 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:00:08,579 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:00:08,580 - sqlalchemy.engine.Engine - INFO - [cached since 1090s ago] ()
+2025-05-26 12:00:08,580 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:00:19,041 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:00:19,041 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files 
+WHERE files.id = ?
+2025-05-26 12:00:19,042 - sqlalchemy.engine.Engine - INFO - [cached since 10.48s ago] ('bb112877e40c4c8d8943dcd09354055c',)
+2025-05-26 12:00:19,043 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Delete of nonexisting embedding ID: bb112877-e40c-4c8d-8943-dcd09354055c
+2025-05-26 12:00:19,044 - chromadb.segment.impl.metadata.sqlite - WARNING - Delete of nonexisting embedding ID: bb112877-e40c-4c8d-8943-dcd09354055c
+2025-05-26 12:00:19,049 - logs.logger - INFO - Deleted file from vector store: Reçu de paiement.pdf (ID: bb112877-e40c-4c8d-8943-dcd09354055c)
+2025-05-26 12:00:19,050 - logs.logger - INFO - Deleted file from filesystem: files/Reçu de paiement.pdf
+2025-05-26 12:00:19,050 - sqlalchemy.engine.Engine - INFO - DELETE FROM files WHERE files.id = ?
+2025-05-26 12:00:19,050 - sqlalchemy.engine.Engine - INFO - [cached since 10.48s ago] ('bb112877e40c4c8d8943dcd09354055c',)
+2025-05-26 12:00:19,051 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-26 12:00:19,059 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:00:19,059 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:00:19,059 - sqlalchemy.engine.Engine - INFO - [cached since 1100s ago] ()
+2025-05-26 12:00:19,060 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:00:20,101 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:00:20,101 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files 
+WHERE files.id = ?
+2025-05-26 12:00:20,101 - sqlalchemy.engine.Engine - INFO - [cached since 11.54s ago] ('c6faa00bd2c24bf99fd9d42b006c76c4',)
+2025-05-26 12:00:20,103 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Delete of nonexisting embedding ID: c6faa00b-d2c2-4bf9-9fd9-d42b006c76c4
+2025-05-26 12:00:20,103 - chromadb.segment.impl.metadata.sqlite - WARNING - Delete of nonexisting embedding ID: c6faa00b-d2c2-4bf9-9fd9-d42b006c76c4
+2025-05-26 12:00:20,109 - logs.logger - INFO - Deleted file from vector store: CV _latestv2 (1) (1).pdf (ID: c6faa00b-d2c2-4bf9-9fd9-d42b006c76c4)
+2025-05-26 12:00:20,109 - logs.logger - INFO - Deleted file from filesystem: files/CV _latestv2 (1) (1).pdf
+2025-05-26 12:00:20,109 - sqlalchemy.engine.Engine - INFO - DELETE FROM files WHERE files.id = ?
+2025-05-26 12:00:20,110 - sqlalchemy.engine.Engine - INFO - [cached since 11.54s ago] ('c6faa00bd2c24bf99fd9d42b006c76c4',)
+2025-05-26 12:00:20,110 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-26 12:00:20,118 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:00:20,118 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:00:20,119 - sqlalchemy.engine.Engine - INFO - [cached since 1101s ago] ()
+2025-05-26 12:00:20,119 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:00:21,669 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:00:21,669 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files 
+WHERE files.id = ?
+2025-05-26 12:00:21,669 - sqlalchemy.engine.Engine - INFO - [cached since 13.11s ago] ('a06f7f70a82d4eb4887878d74660a39b',)
+2025-05-26 12:00:21,671 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Delete of nonexisting embedding ID: a06f7f70-a82d-4eb4-8878-78d74660a39b
+2025-05-26 12:00:21,671 - chromadb.segment.impl.metadata.sqlite - WARNING - Delete of nonexisting embedding ID: a06f7f70-a82d-4eb4-8878-78d74660a39b
+2025-05-26 12:00:21,677 - logs.logger - INFO - Deleted file from vector store: Invoice-44D71B1B-0020.pdf (ID: a06f7f70-a82d-4eb4-8878-78d74660a39b)
+2025-05-26 12:00:21,677 - logs.logger - INFO - Deleted file from filesystem: files/Invoice-44D71B1B-0020.pdf
+2025-05-26 12:00:21,677 - sqlalchemy.engine.Engine - INFO - DELETE FROM files WHERE files.id = ?
+2025-05-26 12:00:21,678 - sqlalchemy.engine.Engine - INFO - [cached since 13.11s ago] ('a06f7f70a82d4eb4887878d74660a39b',)
+2025-05-26 12:00:21,678 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-26 12:00:21,688 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:00:21,689 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:00:21,689 - sqlalchemy.engine.Engine - INFO - [cached since 1103s ago] ()
+2025-05-26 12:00:21,689 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:00:22,725 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:00:22,725 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files 
+WHERE files.id = ?
+2025-05-26 12:00:22,725 - sqlalchemy.engine.Engine - INFO - [cached since 14.17s ago] ('9747c623fc4a4ba5b45c62a2e886e363',)
+2025-05-26 12:00:22,727 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Delete of nonexisting embedding ID: 9747c623-fc4a-4ba5-b45c-62a2e886e363
+2025-05-26 12:00:22,727 - chromadb.segment.impl.metadata.sqlite - WARNING - Delete of nonexisting embedding ID: 9747c623-fc4a-4ba5-b45c-62a2e886e363
+2025-05-26 12:00:22,732 - logs.logger - INFO - Deleted file from vector store: appointment_card_0.pdf (ID: 9747c623-fc4a-4ba5-b45c-62a2e886e363)
+2025-05-26 12:00:22,733 - logs.logger - INFO - Deleted file from filesystem: files/appointment_card_0.pdf
+2025-05-26 12:00:22,733 - sqlalchemy.engine.Engine - INFO - DELETE FROM files WHERE files.id = ?
+2025-05-26 12:00:22,734 - sqlalchemy.engine.Engine - INFO - [cached since 14.16s ago] ('9747c623fc4a4ba5b45c62a2e886e363',)
+2025-05-26 12:00:22,734 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-26 12:00:22,742 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:00:22,742 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:00:22,742 - sqlalchemy.engine.Engine - INFO - [cached since 1104s ago] ()
+2025-05-26 12:00:22,743 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:00:23,477 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:00:23,477 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files 
+WHERE files.id = ?
+2025-05-26 12:00:23,477 - sqlalchemy.engine.Engine - INFO - [cached since 14.92s ago] ('2b0eba71a2b44e9192e09876c428f984',)
+2025-05-26 12:00:23,479 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Delete of nonexisting embedding ID: 2b0eba71-a2b4-4e91-92e0-9876c428f984
+2025-05-26 12:00:23,479 - chromadb.segment.impl.metadata.sqlite - WARNING - Delete of nonexisting embedding ID: 2b0eba71-a2b4-4e91-92e0-9876c428f984
+2025-05-26 12:00:23,485 - logs.logger - INFO - Deleted file from vector store: oncf-voyages-taha farjia.pdf (ID: 2b0eba71-a2b4-4e91-92e0-9876c428f984)
+2025-05-26 12:00:23,485 - logs.logger - INFO - Deleted file from filesystem: files/oncf-voyages-taha farjia.pdf
+2025-05-26 12:00:23,485 - sqlalchemy.engine.Engine - INFO - DELETE FROM files WHERE files.id = ?
+2025-05-26 12:00:23,485 - sqlalchemy.engine.Engine - INFO - [cached since 14.92s ago] ('2b0eba71a2b44e9192e09876c428f984',)
+2025-05-26 12:00:23,486 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-26 12:00:23,494 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:00:23,494 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:00:23,494 - sqlalchemy.engine.Engine - INFO - [cached since 1105s ago] ()
+2025-05-26 12:00:23,495 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:01:06,341 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:01:06,343 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:01:06,343 - sqlalchemy.engine.Engine - INFO - [generated in 0.00018s] ()
+2025-05-26 12:01:06,344 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:02:12,795 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Delete of nonexisting embedding ID: 644a4f00-6041-47c8-be06-476cbb7919e8
+2025-05-26 12:02:12,795 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Delete of nonexisting embedding ID: bb112877-e40c-4c8d-8943-dcd09354055c
+2025-05-26 12:02:12,795 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Delete of nonexisting embedding ID: c6faa00b-d2c2-4bf9-9fd9-d42b006c76c4
+2025-05-26 12:02:12,795 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Delete of nonexisting embedding ID: a06f7f70-a82d-4eb4-8878-78d74660a39b
+2025-05-26 12:02:12,795 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Delete of nonexisting embedding ID: 9747c623-fc4a-4ba5-b45c-62a2e886e363
+2025-05-26 12:02:12,795 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Delete of nonexisting embedding ID: 2b0eba71-a2b4-4e91-92e0-9876c428f984
+2025-05-26 12:02:13,086 - openai._base_client - INFO - Retrying request to /chat/completions in 0.492520 seconds
+2025-05-26 12:02:13,580 - openai._base_client - INFO - Retrying request to /chat/completions in 0.836402 seconds
+2025-05-26 12:02:29,099 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:02:29,099 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:02:29,099 - sqlalchemy.engine.Engine - INFO - [cached since 82.76s ago] ()
+2025-05-26 12:02:29,100 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:02:30,975 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:02:30,975 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:02:30,975 - sqlalchemy.engine.Engine - INFO - [cached since 84.63s ago] ()
+2025-05-26 12:02:30,976 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:03:44,438 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:03:44,440 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:03:44,440 - sqlalchemy.engine.Engine - INFO - [generated in 0.00019s] ()
+2025-05-26 12:03:44,441 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:03:59,161 - openai._base_client - INFO - Retrying request to /chat/completions in 0.487673 seconds
+2025-05-26 12:03:59,650 - openai._base_client - INFO - Retrying request to /chat/completions in 0.950480 seconds
+2025-05-26 12:04:18,877 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:04:18,877 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:04:18,877 - sqlalchemy.engine.Engine - INFO - [cached since 34.44s ago] ()
+2025-05-26 12:04:18,878 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:04:28,204 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 12:04:28,204 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 12:04:28,204 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 12:04:28,861 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 12:04:28,861 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 12:04:28,862 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 12:04:28,918 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:04:28,919 - sqlalchemy.engine.Engine - INFO - INSERT INTO files (id, filename, path, content_type, chunk_count, upload_time) VALUES (?, ?, ?, ?, ?, ?)
+2025-05-26 12:04:28,919 - sqlalchemy.engine.Engine - INFO - [generated in 0.00023s] ('bb53482dcd0a45578ce0c8e5f5e594f9', 'CV _latestv2 (1) (1).pdf', 'files/CV _latestv2 (1) (1).pdf', 'application/octet-stream', 2, '2025-05-26 11:03:36.750219')
+2025-05-26 12:04:28,920 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-26 12:04:28,928 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:04:28,928 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:04:28,929 - sqlalchemy.engine.Engine - INFO - [cached since 44.49s ago] ()
+2025-05-26 12:04:28,929 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:04:35,314 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:04:35,314 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:04:35,314 - sqlalchemy.engine.Engine - INFO - [cached since 50.87s ago] ()
+2025-05-26 12:04:35,315 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:04:42,647 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 2, updating n_results = 2
+2025-05-26 12:04:42,652 - openai._base_client - INFO - Retrying request to /chat/completions in 0.485017 seconds
+2025-05-26 12:04:43,138 - openai._base_client - INFO - Retrying request to /chat/completions in 0.879133 seconds
+2025-05-26 12:06:56,118 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:06:56,118 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:06:56,118 - sqlalchemy.engine.Engine - INFO - [cached since 191.7s ago] ()
+2025-05-26 12:06:56,119 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:07:12,153 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 2, updating n_results = 2
+2025-05-26 12:07:12,167 - openai._base_client - INFO - Retrying request to /chat/completions in 0.409739 seconds
+2025-05-26 12:07:12,578 - openai._base_client - INFO - Retrying request to /chat/completions in 0.796337 seconds
+2025-05-26 12:07:27,258 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:07:27,260 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:07:27,260 - sqlalchemy.engine.Engine - INFO - [generated in 0.00016s] ()
+2025-05-26 12:07:27,261 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:07:36,372 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 2, updating n_results = 2
+2025-05-26 12:07:36,519 - openai._base_client - INFO - Retrying request to /chat/completions in 0.416881 seconds
+2025-05-26 12:07:36,937 - openai._base_client - INFO - Retrying request to /chat/completions in 0.857395 seconds
+2025-05-26 12:09:13,367 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:09:13,368 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:09:13,369 - sqlalchemy.engine.Engine - INFO - [generated in 0.00023s] ()
+2025-05-26 12:09:13,370 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:09:22,086 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 2, updating n_results = 2
+2025-05-26 12:09:22,231 - openai._base_client - INFO - Retrying request to /chat/completions in 0.466710 seconds
+2025-05-26 12:09:22,699 - openai._base_client - INFO - Retrying request to /chat/completions in 0.881620 seconds
+2025-05-26 12:11:58,040 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:11:58,043 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:11:58,043 - sqlalchemy.engine.Engine - INFO - [generated in 0.00018s] ()
+2025-05-26 12:11:58,044 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:12:04,438 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 2, updating n_results = 2
+2025-05-26 12:12:04,629 - openai._base_client - INFO - Retrying request to /chat/completions in 0.406451 seconds
+2025-05-26 12:12:05,036 - openai._base_client - INFO - Retrying request to /chat/completions in 0.990100 seconds
+2025-05-26 12:13:50,856 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:13:50,857 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:13:50,858 - sqlalchemy.engine.Engine - INFO - [generated in 0.00019s] ()
+2025-05-26 12:13:50,859 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:13:58,001 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 2, updating n_results = 2
+2025-05-26 12:13:58,151 - httpx - INFO - HTTP Request: POST http://host.docker.internal:8080/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-26 12:17:00,094 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:17:00,096 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:17:00,096 - sqlalchemy.engine.Engine - INFO - [generated in 0.00018s] ()
+2025-05-26 12:17:00,097 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:17:07,423 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:17:07,424 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files 
+WHERE files.id = ?
+2025-05-26 12:17:07,424 - sqlalchemy.engine.Engine - INFO - [generated in 0.00022s] ('bb53482dcd0a45578ce0c8e5f5e594f9',)
+2025-05-26 12:17:07,436 - chromadb.segment.impl.metadata.sqlite - WARNING - Delete of nonexisting embedding ID: bb53482d-cd0a-4557-8ce0-c8e5f5e594f9
+2025-05-26 12:17:07,437 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Delete of nonexisting embedding ID: bb53482d-cd0a-4557-8ce0-c8e5f5e594f9
+2025-05-26 12:17:07,441 - logs.logger - INFO - Deleted file from vector store: CV _latestv2 (1) (1).pdf (ID: bb53482d-cd0a-4557-8ce0-c8e5f5e594f9)
+2025-05-26 12:17:07,442 - logs.logger - INFO - Deleted file from filesystem: files/CV _latestv2 (1) (1).pdf
+2025-05-26 12:17:07,443 - sqlalchemy.engine.Engine - INFO - DELETE FROM files WHERE files.id = ?
+2025-05-26 12:17:07,443 - sqlalchemy.engine.Engine - INFO - [generated in 0.00015s] ('bb53482dcd0a45578ce0c8e5f5e594f9',)
+2025-05-26 12:17:07,444 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-26 12:17:07,452 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:17:07,452 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:17:07,453 - sqlalchemy.engine.Engine - INFO - [cached since 7.357s ago] ()
+2025-05-26 12:17:07,453 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:19:41,459 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 12:19:41,460 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 12:19:41,460 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 12:19:42,176 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 12:19:42,176 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 12:19:42,177 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 12:19:42,318 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:19:42,319 - sqlalchemy.engine.Engine - INFO - INSERT INTO files (id, filename, path, content_type, chunk_count, upload_time) VALUES (?, ?, ?, ?, ?, ?)
+2025-05-26 12:19:42,320 - sqlalchemy.engine.Engine - INFO - [generated in 0.00021s] ('25287f226b9047d19e6d29f8c13178d1', 'CV _latestv2 (1) (1).pdf', 'files/CV _latestv2 (1) (1).pdf', 'application/octet-stream', 2, '2025-05-26 11:19:33.228705')
+2025-05-26 12:19:42,321 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-26 12:19:42,331 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:19:42,332 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:19:42,332 - sqlalchemy.engine.Engine - INFO - [generated in 0.00015s] ()
+2025-05-26 12:19:42,333 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 12:19:46,468 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:19:46,469 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files 
+WHERE files.id = ?
+2025-05-26 12:19:46,469 - sqlalchemy.engine.Engine - INFO - [generated in 0.00021s] ('25287f226b9047d19e6d29f8c13178d1',)
+2025-05-26 12:19:46,470 - logs.logger - INFO - Deleting file: CV _latestv2 (1) (1).pdf (ID: 25287f22-6b90-47d1-9e6d-29f8c13178d1)
+2025-05-26 12:19:46,472 - chromadb.segment.impl.metadata.sqlite - WARNING - Delete of nonexisting embedding ID: 25287f22-6b90-47d1-9e6d-29f8c13178d1
+2025-05-26 12:19:46,472 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Delete of nonexisting embedding ID: 25287f22-6b90-47d1-9e6d-29f8c13178d1
+2025-05-26 12:19:46,477 - logs.logger - INFO - Deleted file from vector store: CV _latestv2 (1) (1).pdf
+2025-05-26 12:19:46,478 - logs.logger - INFO - Deleted file from filesystem: files/CV _latestv2 (1) (1).pdf
+2025-05-26 12:19:46,478 - sqlalchemy.engine.Engine - INFO - DELETE FROM files WHERE files.id = ?
+2025-05-26 12:19:46,478 - sqlalchemy.engine.Engine - INFO - [generated in 0.00015s] ('25287f226b9047d19e6d29f8c13178d1',)
+2025-05-26 12:19:46,479 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-26 12:19:46,488 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 12:19:46,488 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 12:19:46,488 - sqlalchemy.engine.Engine - INFO - [cached since 4.156s ago] ()
+2025-05-26 12:19:46,489 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 14:34:12,039 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 14:34:12,041 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 14:34:12,041 - sqlalchemy.engine.Engine - INFO - [generated in 0.00013s] ()
+2025-05-26 14:34:12,042 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 14:35:08,344 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-26 14:35:08,345 - sqlalchemy.engine.Engine - INFO - SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files
+2025-05-26 14:35:08,345 - sqlalchemy.engine.Engine - INFO - [generated in 0.00016s] ()
+2025-05-26 14:35:08,346 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-26 14:36:19,963 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 14:36:19,990 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 14:36:36,507 - logs.logger - INFO - Deleting file: Reçu de paiement.pdf (ID: da26d0f7-ffd4-4978-b3b7-bcac70d37b95)
+2025-05-26 14:36:36,508 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Delete of nonexisting embedding ID: da26d0f7-ffd4-4978-b3b7-bcac70d37b95
+2025-05-26 14:36:36,508 - chromadb.segment.impl.metadata.sqlite - WARNING - Delete of nonexisting embedding ID: da26d0f7-ffd4-4978-b3b7-bcac70d37b95
+2025-05-26 14:36:36,514 - logs.logger - INFO - Deleted file from vector store: Reçu de paiement.pdf
+2025-05-26 14:36:36,514 - logs.logger - INFO - Deleted file from filesystem: files/Reçu de paiement.pdf
+2025-05-26 14:48:00,945 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 14:48:00,946 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 14:48:00,946 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 14:48:01,676 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 14:48:01,676 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 14:48:01,676 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-26 14:48:05,517 - logs.logger - INFO - Deleting file: CV _latestv2 (1) (1).pdf (ID: e927364e-d6e2-4beb-bb69-65ae632df643)
+2025-05-26 14:48:05,526 - logs.logger - INFO - Deleted file from vector store: CV _latestv2 (1) (1).pdf
+2025-05-26 14:48:05,527 - logs.logger - INFO - Deleted file from filesystem: files/CV _latestv2 (1) (1).pdf
+2025-05-26 14:48:18,245 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 0, updating n_results = 0
+2025-05-26 14:48:18,386 - httpx - INFO - HTTP Request: POST http://host.docker.internal:8080/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-26 23:26:01,635 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 0, updating n_results = 0
+2025-05-26 23:26:06,817 - openai._base_client - INFO - Retrying request to /chat/completions in 0.402189 seconds
+2025-05-26 23:26:12,219 - openai._base_client - INFO - Retrying request to /chat/completions in 0.985136 seconds
+2025-05-26 23:26:58,927 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 0, updating n_results = 0
+2025-05-26 23:26:59,107 - httpx - INFO - HTTP Request: POST http://host.docker.internal:8080/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-26 23:29:18,180 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 0, updating n_results = 0
+2025-05-26 23:29:18,187 - httpx - INFO - HTTP Request: POST http://host.docker.internal:8080/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-26 23:29:56,707 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 0, updating n_results = 0
+2025-05-26 23:29:56,714 - httpx - INFO - HTTP Request: POST http://host.docker.internal:8080/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-26 23:41:07,456 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 0, updating n_results = 0
+2025-05-26 23:41:07,463 - httpx - INFO - HTTP Request: POST http://host.docker.internal:8080/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-27 09:38:59,345 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-27 09:38:59,360 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-27 10:46:35,627 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-27 10:46:35,674 - pdfminer.pdfpage - WARNING - CropBox missing from /Page, defaulting to MediaBox
+2025-05-27 10:50:35,566 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 10:50:38,264 - openai._base_client - INFO - Retrying request to /chat/completions in 0.427513 seconds
+2025-05-27 10:50:41,098 - openai._base_client - INFO - Retrying request to /chat/completions in 0.800426 seconds
+2025-05-27 10:51:00,433 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 10:51:02,873 - openai._base_client - INFO - Retrying request to /chat/completions in 0.463990 seconds
+2025-05-27 10:51:05,572 - openai._base_client - INFO - Retrying request to /chat/completions in 0.827293 seconds
+2025-05-27 10:54:53,944 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 10:54:55,068 - openai._base_client - INFO - Retrying request to /chat/completions in 0.381390 seconds
+2025-05-27 10:54:57,767 - openai._base_client - INFO - Retrying request to /chat/completions in 0.814062 seconds
+2025-05-27 11:00:36,100 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:00:37,095 - openai._base_client - INFO - Retrying request to /chat/completions in 0.399148 seconds
+2025-05-27 11:00:39,903 - openai._base_client - INFO - Retrying request to /chat/completions in 0.981553 seconds
+2025-05-27 11:02:12,118 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:02:13,299 - openai._base_client - INFO - Retrying request to /chat/completions in 0.452675 seconds
+2025-05-27 11:02:18,222 - openai._base_client - INFO - Retrying request to /chat/completions in 0.867871 seconds
+2025-05-27 11:02:29,993 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:02:32,768 - openai._base_client - INFO - Retrying request to /chat/completions in 0.438962 seconds
+2025-05-27 11:02:35,587 - openai._base_client - INFO - Retrying request to /chat/completions in 0.910118 seconds
+2025-05-27 11:02:41,924 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:02:44,507 - openai._base_client - INFO - Retrying request to /chat/completions in 0.458480 seconds
+2025-05-27 11:02:47,316 - openai._base_client - INFO - Retrying request to /chat/completions in 0.976064 seconds
+2025-05-27 11:02:58,289 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:03:00,689 - openai._base_client - INFO - Retrying request to /chat/completions in 0.450546 seconds
+2025-05-27 11:03:03,506 - openai._base_client - INFO - Retrying request to /chat/completions in 0.779223 seconds
+2025-05-27 11:04:16,734 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:04:18,125 - openai._base_client - INFO - Retrying request to /chat/completions in 0.394246 seconds
+2025-05-27 11:04:20,931 - openai._base_client - INFO - Retrying request to /chat/completions in 0.852456 seconds
+2025-05-27 11:04:26,717 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:04:29,381 - openai._base_client - INFO - Retrying request to /chat/completions in 0.493089 seconds
+2025-05-27 11:04:34,305 - openai._base_client - INFO - Retrying request to /chat/completions in 0.828206 seconds
+2025-05-27 11:04:39,016 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:04:41,812 - openai._base_client - INFO - Retrying request to /chat/completions in 0.476597 seconds
+2025-05-27 11:04:44,631 - openai._base_client - INFO - Retrying request to /chat/completions in 0.832217 seconds
+2025-05-27 11:07:34,404 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:07:35,681 - openai._base_client - INFO - Retrying request to /chat/completions in 0.459705 seconds
+2025-05-27 11:07:38,502 - openai._base_client - INFO - Retrying request to /chat/completions in 0.898047 seconds
+2025-05-27 11:07:45,672 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:07:48,325 - openai._base_client - INFO - Retrying request to /chat/completions in 0.476712 seconds
+2025-05-27 11:07:51,145 - openai._base_client - INFO - Retrying request to /chat/completions in 0.923073 seconds
+2025-05-27 11:08:04,815 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:08:07,382 - openai._base_client - INFO - Retrying request to /chat/completions in 0.486763 seconds
+2025-05-27 11:08:10,182 - openai._base_client - INFO - Retrying request to /chat/completions in 0.787988 seconds
+2025-05-27 11:08:15,899 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:08:18,593 - openai._base_client - INFO - Retrying request to /chat/completions in 0.408375 seconds
+2025-05-27 11:08:21,383 - openai._base_client - INFO - Retrying request to /chat/completions in 0.858781 seconds
+2025-05-27 11:08:34,603 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:08:37,212 - openai._base_client - INFO - Retrying request to /chat/completions in 0.499524 seconds
+2025-05-27 11:08:40,048 - openai._base_client - INFO - Retrying request to /chat/completions in 0.776785 seconds
+2025-05-27 11:08:52,668 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:08:55,373 - openai._base_client - INFO - Retrying request to /chat/completions in 0.493520 seconds
+2025-05-27 11:08:58,182 - openai._base_client - INFO - Retrying request to /chat/completions in 0.866997 seconds
+2025-05-27 11:13:00,603 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:13:01,984 - openai._base_client - INFO - Retrying request to /chat/completions in 0.487541 seconds
+2025-05-27 11:13:05,276 - openai._base_client - INFO - Retrying request to /chat/completions in 0.960704 seconds
+2025-05-27 11:13:20,398 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:13:23,064 - openai._base_client - INFO - Retrying request to /chat/completions in 0.438781 seconds
+2025-05-27 11:13:25,770 - openai._base_client - INFO - Retrying request to /chat/completions in 0.876944 seconds
+2025-05-27 11:13:30,780 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:13:33,475 - openai._base_client - INFO - Retrying request to /chat/completions in 0.453177 seconds
+2025-05-27 11:13:36,339 - openai._base_client - INFO - Retrying request to /chat/completions in 0.850956 seconds
+2025-05-27 11:14:06,144 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:14:08,952 - openai._base_client - INFO - Retrying request to /chat/completions in 0.443680 seconds
+2025-05-27 11:14:11,792 - openai._base_client - INFO - Retrying request to /chat/completions in 0.851622 seconds
+2025-05-27 11:14:43,497 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:14:46,264 - openai._base_client - INFO - Retrying request to /chat/completions in 0.434520 seconds
+2025-05-27 11:14:49,127 - openai._base_client - INFO - Retrying request to /chat/completions in 0.763756 seconds
+2025-05-27 11:14:56,638 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:14:57,332 - openai._base_client - INFO - Retrying request to /chat/completions in 0.417653 seconds
+2025-05-27 11:15:00,139 - openai._base_client - INFO - Retrying request to /chat/completions in 0.897865 seconds
+2025-05-27 11:15:04,624 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:15:06,911 - openai._base_client - INFO - Retrying request to /chat/completions in 0.398411 seconds
+2025-05-27 11:15:09,611 - openai._base_client - INFO - Retrying request to /chat/completions in 0.819734 seconds
+2025-05-27 11:15:14,560 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:15:16,932 - openai._base_client - INFO - Retrying request to /chat/completions in 0.390338 seconds
+2025-05-27 11:15:19,807 - openai._base_client - INFO - Retrying request to /chat/completions in 0.950949 seconds
+2025-05-27 11:15:34,444 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
+2025-05-27 11:15:36,889 - openai._base_client - INFO - Retrying request to /chat/completions in 0.401446 seconds
+2025-05-27 11:15:39,592 - openai._base_client - INFO - Retrying request to /chat/completions in 0.856600 seconds

@@ -1,8 +1,13 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes import chat, files
+from logs.logger import setup_logging
 # 1. Initialize FastAPI app
 app = FastAPI()
+
+setup_logging()
+
+
 
 app.add_middleware(
     CORSMiddleware,

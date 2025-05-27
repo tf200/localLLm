@@ -200,6 +200,7 @@ def extract_text_by_page(file_path: str) -> List[Tuple[int, str]]:
 def chunk_pages(
     file_path: str,
     pages_data: List[Tuple[int, str]], # Renamed from 'pages' to 'pages_data' for clarity
+    file_id: str,
     chunk_size: int = 1000,
     chunk_overlap: int = 200
 ) -> Tuple[List[str], List[Dict]]:
@@ -236,8 +237,8 @@ def chunk_pages(
             metadata = {
                 "source": file_name,
                 "chunk_on_page_id": chunk_idx, # Distinguishes chunks from the same page/sheet
-                 # Add original file path for potential future reference, if desired
-                "original_file_path": file_path 
+                "original_file_path": file_path,
+                "file_id": file_id
             }
             
             # Add file-type specific metadata key for page/sheet number
@@ -253,6 +254,7 @@ def chunk_pages(
 
 def prepare_document_for_rag(
     file_path: str,
+    file_id: str,
     chunk_size: int = 1000,
     chunk_overlap: int = 200
 ) -> Tuple[List[str], List[Dict]]:
@@ -269,7 +271,7 @@ def prepare_document_for_rag(
         return [], [] # Return empty lists if no text was extracted
 
     # Step 2: Chunk the extracted page/sheet texts
-    texts, metadatas = chunk_pages(file_path, pages_data, chunk_size, chunk_overlap)
+    texts, metadatas = chunk_pages(file_path, pages_data, file_id ,chunk_size, chunk_overlap)
     
     print(f"Finished RAG preparation for {os.path.basename(file_path)}. Extracted {len(texts)} chunks.")
     return texts, metadatas

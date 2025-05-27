@@ -3,19 +3,23 @@ import uuid
 import asyncio
 from typing import List, Dict
 
-from fastapi import APIRouter, File, UploadFile, HTTPException
+
+from fastapi import APIRouter, Depends, File, UploadFile, HTTPException
 from fastapi.responses import JSONResponse
 import aiofiles
 import aiofiles.os as aios
+from sqlalchemy import select
 
 # Import utilities from embedding_utils.py
+from logs.logger import LoggerDep
+from sqlite_db.query import save_file_metadata_to_db
+from sqlite_db.session import get_db
 from util.vector_store import collection, prepare_document_for_rag
-from schema.files import FileListResponse
+from schema.files import DeleteFileResponse, FileListResponse
 
+from sqlite_db.models import File
 
-
-
-
+from sqlalchemy.ext.asyncio import AsyncSession
 
 
 router= APIRouter()
@@ -27,77 +31,144 @@ if not os.path.exists(UPLOAD_DIRECTORY):
 
 
 
-@router.get("/list-files", response_model=FileListResponse)
-async def list_files():
+@router.get("/files", response_model=List[FileListResponse])
+async def list_files(logger: LoggerDep, db: AsyncSession = Depends(get_db)):
     """
-    List all files and directories in the hard-coded folder.
+    List all files stored in the vector DB (via tracked metadata in SQL).
     
     Returns:
-    - JSON with path, files list, and directories list
+    - JSON with a list of file names and file IDs.
     """
     try:
+        result = await db.execute(select(File))
+        files = result.scalars().all()
         
-        FOLDER_PATH = os.path.join(os.getcwd(), "files")
-            
-        if not os.path.exists(FOLDER_PATH):
-            raise HTTPException(status_code=404, detail=f"Directory not found: {FOLDER_PATH}")
-            
-        if not os.path.isdir(FOLDER_PATH):
-            print(f"ERROR: Path is not a directory: {FOLDER_PATH}")
-            raise HTTPException(status_code=400, detail=f"Path is not a directory: {FOLDER_PATH}")
-        
-        
-        files = []
-        directories = []
-        
-        try:
-            # Try scandir first (more efficient)
-            with os.scandir(FOLDER_PATH) as entries:
-                for entry in entries:
-                    try:
-                        if entry.is_file():
-                            files.append(entry.name)
-                        elif entry.is_dir():
-                            directories.append(entry.name)
-                    except Exception as entry_error:
-                        print(f"Error processing entry {entry.name}: {str(entry_error)}")
-        except AttributeError as ae:
-            # Fallback to listdir if scandir not available
-            print(f"os.scandir not available, falling back to os.listdir: {str(ae)}")
-            try:
-                for entry in os.listdir(FOLDER_PATH):
-                    full_path = os.path.join(FOLDER_PATH, entry)
-                    if os.path.isfile(full_path):
-                        files.append(entry)
-                    elif os.path.isdir(full_path):
-                        directories.append(entry)
-            except Exception as listdir_error:
-                print(f"Error using os.listdir: {str(listdir_error)}")
-                raise
-        except Exception:
-            raise
-        
-        
-        result = {
-            "path": os.path.abspath(FOLDER_PATH),
-            "files": sorted(files),
-            "directories": sorted(directories)
-        }
-        
-        return result
-    
-    except PermissionError:
-        error_msg = f"Permission denied for directory: {FOLDER_PATH}" # type: ignore
-        raise HTTPException(status_code=403, detail=error_msg)
-        
-    except HTTPException:
-        # Re-raise HTTP exceptions without modification
-        raise
-        
+        return [
+            FileListResponse(
+                filename = file.filename,
+                file_id = str(file.id),
+                path = file.path
+            ) for file in files
+        ]
     except Exception as e:
-        error_msg = f"Internal server error in list_files: {str(e)}"
-        raise HTTPException(status_code=500, detail=error_msg)
+        logger.error(f"Error listing files: {str(e)}")
+        raise HTTPException(status_code=500, detail="Internal server error while listing files.")
+
+
+@router.delete("/files/{file_id}", response_model=DeleteFileResponse)
+async def delete_file(file_id: str, logger: LoggerDep, db: AsyncSession = Depends(get_db)):
+    """
+    Deletes a file by its ID from the vector DB and the filesystem.
     
+    Args:
+    - file_id: The ID of the file to delete.
+    
+    Returns:
+    - JSON response indicating success or failure.
+    """
+    try:
+        file_uuid = uuid.UUID(file_id)
+        result = await db.execute(select(File).where(File.id == file_uuid))
+        file = result.scalar_one_or_none()
+
+        if not file:
+            raise HTTPException(status_code=404, detail="File not found.")
+        
+        logger.info(f"Deleting file: {file.filename} (ID: {file.id})")
+
+        try:
+            collection.delete(where={"file_id": str(file.id)})  # type: ignore
+            logger.info(f"Deleted file from vector store: {file.filename}")
+        except Exception as e:
+            logger.error(f"Failed to delete from vector store: {e}")
+            raise HTTPException(status_code=500, detail="Vector store deletion failed.")
+
+        try:
+            if await aios.path.exists(file.path):
+                await aios.remove(file.path)
+                logger.info(f"Deleted file from filesystem: {file.path}")
+        except Exception as e:
+            logger.error(f"Failed to delete file from filesystem: {e}")
+            raise HTTPException(status_code=500, detail="Filesystem deletion failed.")
+
+        try:
+            await db.delete(file)
+            await db.commit()
+        except Exception as e:
+            logger.error(f"Failed to delete metadata from DB: {e}")
+            await db.rollback()
+            raise HTTPException(status_code=500, detail="Database commit failed.")
+        
+        return DeleteFileResponse(
+            message=f"File '{file.filename}' deleted successfully.",
+            file_id=file_id
+        )
+
+    except HTTPException as http_ex:
+        raise http_ex
+    except Exception as e:
+        logger.error(f"Unexpected error deleting file {file_id}: {str(e)}")
+        raise HTTPException(status_code=500, detail="Internal server error while deleting file.")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ==================================================
 
 async def process_and_embed_file(file_path: str, original_filename: str) -> Dict:
     """
@@ -113,10 +184,11 @@ async def process_and_embed_file(file_path: str, original_filename: str) -> Dict
         "error": None
     }
 
+    file_id = str(uuid.uuid4())  # Generate a unique ID for the file
+
     try:
         # Run CPU-bound 'prepare_document_for_rag' in a thread pool
-        texts, metadatas = await asyncio.to_thread(prepare_document_for_rag, file_path)
-
+        texts, metadatas = await asyncio.to_thread(prepare_document_for_rag, file_path, file_id)
         if texts and metadatas:
             ids = [str(uuid.uuid4()) for _ in texts]
             # Run synchronous 'collection.add' in a thread pool
@@ -124,6 +196,13 @@ async def process_and_embed_file(file_path: str, original_filename: str) -> Dict
             file_result["chunks_embedded"] = len(texts)
             file_result["status"] = "successfully_embedded"
             print(f"Successfully embedded {len(texts)} chunks from {original_filename}")
+            await save_file_metadata_to_db(
+                file_id=file_id,
+                filename=original_filename,
+                path=file_path,
+                content_type="application/octet-stream",  # Assuming binary files, adjust as needed
+                chunk_count=len(texts)
+            )
         elif not texts:
             file_result["status"] = "no_text_to_embed"
             print(f"No text to embed from {original_filename} after RAG preparation.")
@@ -135,25 +214,23 @@ async def process_and_embed_file(file_path: str, original_filename: str) -> Dict
     except Exception as e:
         error_message = f"Error during embedding process for {original_filename}: {str(e)}"
         print(error_message)
-        # import traceback
-        # traceback.print_exc() # For more detailed server-side logging
+
         file_result["status"] = "error_embedding"
         file_result["error"] = error_message
         # Optionally, clean up the saved file if embedding fails and it's desired
-        # if await aios.path.exists(file_path):
-        #     try:
-        #         await aios.remove(file_path)
-        #         print(f"Cleaned up failed file: {file_path}")
-        #     except Exception as rm_err:
-        #         print(f"Error cleaning up file {file_path}: {rm_err}")
+        if await aios.path.exists(file_path):
+            try:
+                await aios.remove(file_path)
+                print(f"Cleaned up failed file: {file_path}")
+            except Exception as rm_err:
+                print(f"Error cleaning up file {file_path}: {rm_err}")
     
     return file_result
 
 
 
-
 @router.post("/upload")
-async def upload_files_endpoint(files: List[UploadFile] = File(...)):
+async def upload_files_endpoint(files: List[UploadFile] ):
     """
     Uploads one or more files, saves them, processes them for RAG,
     and embeds them into ChromaDB asynchronously.
@@ -166,17 +243,13 @@ async def upload_files_endpoint(files: List[UploadFile] = File(...)):
 
     for file_upload in files:
         if not file_upload.filename:
-            # This specific file lacks a filename, we can skip it or raise an error for the whole batch
-            # For now, let's add a note and continue, or you could raise HTTPException here
             print(f"Skipping a file due to missing filename.")
-            # Or: raise HTTPException(status_code=400, detail="One or more files are missing a filename.")
-            continue
+            raise HTTPException(status_code=400, detail="One or more files are missing a filename.")
 
-        # Basic filename sanitization (consider more robust methods for production)
         safe_filename = os.path.basename(file_upload.filename)
         if not safe_filename: # e.g. if filename was just ".."
             print(f"Skipping file due to invalid sanitized filename: {file_upload.filename}")
-            continue
+            raise HTTPException(status_code=400, detail="One or more files have an invalid filename.")
         
         file_path = os.path.join(UPLOAD_DIRECTORY, safe_filename)
 
@@ -193,6 +266,10 @@ async def upload_files_endpoint(files: List[UploadFile] = File(...)):
             # A more robust solution might involve reporting individual file save errors.
             print(f"Error saving file {safe_filename}: {str(e)}. Skipping this file.")
             # Consider adding to a list of failed saves to report back to the client.
+            raise HTTPException(
+                status_code=500,
+                detail=f"Failed to save file {safe_filename}: {str(e)}"
+            )
 
     # Create processing tasks for successfully saved files
     for file_info in saved_file_paths_info:

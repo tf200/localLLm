@@ -44,6 +44,8 @@ async def stream_answer(question: str):
 
     context = "\n\n---\n\n".join(context_with_metadata)
 
+    print(f"Context for question '{question}':\n{context}\n")
+
     user_prompt = f"""
 Use the following retrieved documents to answer my question.
 
