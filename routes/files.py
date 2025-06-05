@@ -14,7 +14,7 @@ from sqlalchemy import select
 from logs.logger import LoggerDep
 from sqlite_db.query import save_file_metadata_to_db
 from sqlite_db.session import get_db
-from util.vector_store import collection, prepare_document_for_rag
+from util.vector_store import collection, prepare_document_for_rag, process_and_embed_pdf_batched
 from schema.files import DeleteFileResponse, FileListResponse
 
 from sqlite_db.models import File
@@ -305,4 +305,112 @@ async def upload_files_endpoint(files: List[UploadFile] ):
             "files_details": processed_files_details
         },
         status_code=200 # Could be 207 (Multi-Status) if some succeeded and some failed
+    )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ==================================================
+# Updated upload endpoint to use batched processing for PDFs
+@router.post("/new_upload")
+async def upload_files_endpoint_batched(files: List[UploadFile]):
+    """
+    Updated upload endpoint that uses batch processing for better memory management.
+    """
+    if not files:
+        raise HTTPException(status_code=400, detail="No files provided.")
+
+    upload_tasks = []
+    saved_file_paths_info = []
+
+    # Save files first (same as before)
+    for file_upload in files:
+        if not file_upload.filename:
+            raise HTTPException(status_code=400, detail="One or more files are missing a filename.")
+
+        safe_filename = os.path.basename(file_upload.filename)
+        if not safe_filename:
+            raise HTTPException(status_code=400, detail="One or more files have an invalid filename.")
+        
+        file_path = os.path.join(UPLOAD_DIRECTORY, safe_filename)
+
+        try:
+            async with aiofiles.open(file_path, "wb") as buffer:
+                content = await file_upload.read()
+                await buffer.write(content)
+            
+            print(f"File '{safe_filename}' saved to '{file_path}'")
+            saved_file_paths_info.append({
+                "path": file_path, 
+                "original_filename": safe_filename, 
+                "content_type": file_upload.content_type
+            })
+        except Exception as e:
+            print(f"Error saving file {safe_filename}: {str(e)}")
+            raise HTTPException(status_code=500, detail=f"Failed to save file {safe_filename}: {str(e)}")
+
+    # Create processing tasks - use batched processing for PDFs
+    for file_info in saved_file_paths_info:
+        if file_info["path"].lower().endswith('.pdf'):
+            # Use batched processing for PDFs
+            upload_tasks.append(
+                process_and_embed_pdf_batched(
+                    file_info["path"], 
+                    file_info["original_filename"],
+                    collection,
+                    page_batch_size=10,  # Adjust based on your memory constraints
+                    embedding_batch_size=100  # Adjust based on your memory constraints
+                )
+            )
+        else:
+            # Use original processing for other file types (for now)
+            upload_tasks.append(
+                process_and_embed_file(file_info["path"], file_info["original_filename"])
+            )
+
+    # Wait for all processing tasks
+    results = await asyncio.gather(*upload_tasks)
+
+    # Process results (same as before)
+    total_chunks_globally = 0
+    processed_files_details = []
+    successful_uploads_count = 0
+
+    for result_dict in results:
+        file_info = next(
+            (f for f in saved_file_paths_info if f["original_filename"] == result_dict["filename"]), 
+            None
+        )
+        
+        processed_files_details.append({
+            "filename": result_dict["filename"],
+            "content_type": file_info["content_type"] if file_info else "N/A",
+            "status": result_dict["status"],
+            "chunks_embedded": result_dict["chunks_embedded"],
+            "pages_processed": result_dict.get("pages_processed", "N/A"),
+            "detail": result_dict["error"] if result_dict["error"] else "Processed successfully."
+        })
+        
+        if result_dict["status"] == "successfully_embedded":
+            total_chunks_globally += result_dict["chunks_embedded"]
+            successful_uploads_count += 1
+
+    return JSONResponse(
+        content={
+            "message": f"Processed {len(saved_file_paths_info)} files. {successful_uploads_count} successfully embedded.",
+            "total_chunks_embedded_in_request": total_chunks_globally,
+            "files_details": processed_files_details
+        },
+        status_code=200
     )

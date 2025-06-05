@@ -1,11 +1,16 @@
 import os
 import chromadb
 import pdfplumber
-from typing import List, Tuple, Dict
+from typing import List, Tuple, Dict, Generator
+import gc
+import asyncio
+import uuid
 from langchain_text_splitters import CharacterTextSplitter
 import pytesseract
 import docx
-import pandas as pd
+import pandas as pd 
+from sqlite_db.query import save_file_metadata_to_db
+
 
 # --- ChromaDB Initialization ---
 # Adjust the path if your 'db' directory is located elsewhere relative to this file.
@@ -275,3 +280,320 @@ def prepare_document_for_rag(
     
     print(f"Finished RAG preparation for {os.path.basename(file_path)}. Extracted {len(texts)} chunks.")
     return texts, metadatas
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#========================================================
+
+
+
+
+def extract_pdf_pages_in_batches(
+    pdf_path: str, 
+    batch_size: int = 10
+) -> Generator[List[Tuple[int, str]], None, None]:
+    """
+    Generator that yields batches of PDF pages as (page_number, text) tuples.
+    This prevents loading all pages into memory at once.
+    """
+    try:
+        with pdfplumber.open(pdf_path) as pdf:
+            current_batch = []
+            
+            for i, page in enumerate(pdf.pages, start=1):
+                text = page.extract_text()
+                
+                # Fallback to OCR if minimal text found
+                if not text or len(text.strip()) < 40:
+                    print(f"Page {i} of {os.path.basename(pdf_path)}: Falling back to OCR.")
+                    try:
+                        pil_img = page.to_image(resolution=300).original
+                        text_ocr = pytesseract.image_to_string(pil_img)
+                        text = text_ocr if text_ocr and len(text_ocr.strip()) > len(text.strip() if text else "") else text
+                    except Exception as ocr_err:
+                        print(f"OCR failed for page {i}: {ocr_err}")
+                
+                current_batch.append((i, text.strip() if text else ""))
+                
+                # Yield batch when it reaches the specified size
+                if len(current_batch) >= batch_size:
+                    yield current_batch
+                    current_batch = []
+                    # Force garbage collection after each batch
+                    gc.collect()
+            
+            # Yield remaining pages if any
+            if current_batch:
+                yield current_batch
+                
+    except Exception as e:
+        print(f"Error processing PDF {os.path.basename(pdf_path)}: {e}")
+        # Yield error as a single batch
+        yield [(1, f"Error processing PDF: {e}")]
+
+
+def chunk_batch_pages(
+    batch_pages: List[Tuple[int, str]],
+    file_path: str,
+    file_id: str,
+    chunk_size: int = 1000,
+    chunk_overlap: int = 200
+) -> Tuple[List[str], List[Dict]]:
+    """
+    Chunks a batch of pages and returns texts and metadata.
+    """
+    texts: List[str] = []
+    metadatas: List[Dict] = []
+    file_name = os.path.basename(file_path)
+    
+    splitter = CharacterTextSplitter(
+        separator="\n\n",
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
+        length_function=len,
+        is_separator_regex=False,
+    )
+    
+    for page_num, page_text in batch_pages:
+        if not page_text or not page_text.strip():
+            continue
+            
+        page_chunks = splitter.split_text(page_text)
+        
+        for chunk_idx, chunk_content in enumerate(page_chunks, start=1):
+            if not chunk_content.strip():
+                continue
+                
+            texts.append(chunk_content)
+            
+            metadata = {
+                "source": file_name,
+                "chunk_on_page_id": chunk_idx,
+                "original_file_path": file_path,
+                "file_id": file_id,
+                "page_number": page_num
+            }
+            
+            metadatas.append(metadata)
+    
+    return texts, metadatas
+
+
+async def process_pdf_in_batches(
+    file_path: str,
+    file_id: str,
+    collection,  # ChromaDB collection
+    batch_size: int = 10,
+    embedding_batch_size: int = 100,
+    chunk_size: int = 1000,
+    chunk_overlap: int = 200
+) -> Dict:
+    """
+    Process PDF in batches to manage memory usage.
+    
+    Args:
+        file_path: Path to the PDF file
+        file_id: Unique identifier for the file
+        collection: ChromaDB collection object
+        batch_size: Number of pages to process at once
+        embedding_batch_size: Number of chunks to embed at once
+        chunk_size: Size of each text chunk
+        chunk_overlap: Overlap between chunks
+    
+    Returns:
+        Dictionary with processing results
+    """
+    total_chunks = 0
+    total_pages_processed = 0
+    
+    try:
+        # BATCH PROCESSING LOOP - This is where each batch gets processed sequentially
+        print(f"Starting batch processing for {os.path.basename(file_path)}")
+        
+        for batch_number, page_batch in enumerate(extract_pdf_pages_in_batches(file_path, batch_size), 1):
+            if not page_batch:
+                continue
+                
+            print(f"🔄 PROCESSING BATCH #{batch_number}: {len(page_batch)} pages (pages {page_batch[0][0]}-{page_batch[-1][0]})")
+            
+            # STEP 1: Chunk the current batch of pages
+            print(f"   └── Step 1: Chunking pages {page_batch[0][0]}-{page_batch[-1][0]}")
+            batch_texts, batch_metadatas = await asyncio.to_thread(
+                chunk_batch_pages, 
+                page_batch, 
+                file_path, 
+                file_id, 
+                chunk_size, 
+                chunk_overlap
+            )
+            
+            total_pages_processed += len(page_batch)
+            print(f"   └── Created {len(batch_texts)} chunks from this batch")
+            
+            if not batch_texts:
+                print(f"   └── No chunks created from batch #{batch_number}, skipping embedding")
+                continue
+            
+            # STEP 2: Embed chunks in smaller batches to manage memory
+            print(f"   └── Step 2: Embedding {len(batch_texts)} chunks in sub-batches of {embedding_batch_size}")
+            await embed_chunks_in_batches(
+                batch_texts, 
+                batch_metadatas, 
+                collection, 
+                embedding_batch_size
+            )
+            
+            total_chunks += len(batch_texts)
+            
+            # STEP 3: Clear batch data and force garbage collection
+            print(f"   └── Step 3: Cleaning up memory for batch #{batch_number}")
+            del batch_texts, batch_metadatas, page_batch
+            gc.collect()
+            
+            print(f"✅ BATCH #{batch_number} COMPLETE: Total processed = {total_pages_processed} pages, {total_chunks} chunks")
+            print(f"{'='*60}")
+        
+        print(f"🎉 ALL BATCHES COMPLETE: {total_pages_processed} pages, {total_chunks} chunks embedded")
+        return {
+            "status": "successfully_embedded",
+            "chunks_embedded": total_chunks,
+            "pages_processed": total_pages_processed,
+            "error": None
+        }
+        
+    except Exception as e:
+        error_msg = f"Error processing PDF {os.path.basename(file_path)}: {str(e)}"
+        print(error_msg)
+        return {
+            "status": "error_embedding",
+            "chunks_embedded": total_chunks,
+            "pages_processed": total_pages_processed,
+            "error": error_msg
+        }
+
+
+async def embed_chunks_in_batches(
+    texts: List[str],
+    metadatas: List[Dict],
+    collection,
+    batch_size: int = 100
+) -> None:
+    """
+    Embed chunks in smaller batches to manage memory.
+    This creates SUB-BATCHES within each page batch for embedding.
+    """
+    total_embedding_batches = (len(texts) + batch_size - 1) // batch_size
+    print(f"      └── Will create {total_embedding_batches} embedding sub-batches of max {batch_size} chunks each")
+    
+    for sub_batch_num, i in enumerate(range(0, len(texts), batch_size), 1):
+        batch_texts = texts[i:i + batch_size]
+        batch_metadatas = metadatas[i:i + batch_size]
+        batch_ids = [str(uuid.uuid4()) for _ in batch_texts]
+        
+        print(f"      └── Embedding sub-batch {sub_batch_num}/{total_embedding_batches}: {len(batch_texts)} chunks (chunks {i+1}-{i+len(batch_texts)})")
+        
+        # Embed the current sub-batch
+        await asyncio.to_thread(
+            collection.add,
+            documents=batch_texts,
+            metadatas=batch_metadatas,
+            ids=batch_ids
+        )
+        
+        print(f"      └── ✅ Sub-batch {sub_batch_num} embedded successfully")
+        
+        # Clear sub-batch data and force garbage collection
+        del batch_texts, batch_metadatas, batch_ids
+        gc.collect()
+    
+
+
+
+async def process_and_embed_pdf_batched(
+    file_path: str, 
+    original_filename: str,
+    collection,
+    page_batch_size: int = 10,
+    embedding_batch_size: int = 100
+) -> Dict:
+    """
+    Updated version of process_and_embed_file specifically for PDFs with batch processing.
+    """
+    print(f"Processing and embedding PDF in batches: {original_filename}")
+    
+    file_result = {
+        "filename": original_filename,
+        "path": file_path,
+        "status": "processing",
+        "chunks_embedded": 0,
+        "pages_processed": 0,
+        "error": None
+    }
+    
+    file_id = str(uuid.uuid4())
+    
+    try:
+        # Check if file is PDF
+        if not file_path.lower().endswith('.pdf'):
+            raise ValueError("This function is specifically for PDF files")
+        
+        # Process PDF in batches
+        result = await process_pdf_in_batches(
+            file_path=file_path,
+            file_id=file_id,
+            collection=collection,
+            batch_size=page_batch_size,
+            embedding_batch_size=embedding_batch_size
+        )
+        
+        file_result.update(result)
+        
+        if result["status"] == "successfully_embedded":
+            print(f"Successfully embedded {result['chunks_embedded']} chunks from {original_filename}")
+            
+            # Save file metadata
+            await save_file_metadata_to_db(
+                file_id=file_id,
+                filename=original_filename,
+                path=file_path,
+                content_type="application/pdf",
+                chunk_count=result["chunks_embedded"]
+            )
+        
+    except Exception as e:
+        error_message = f"Error during batch embedding process for {original_filename}: {str(e)}"
+        print(error_message)
+        
+        file_result["status"] = "error_embedding"
+        file_result["error"] = error_message
+        
+        # Clean up file if needed
+        if os.path.exists(file_path):
+            try:
+                os.remove(file_path)
+                print(f"Cleaned up failed file: {file_path}")
+            except Exception as rm_err:
+                print(f"Error cleaning up file {file_path}: {rm_err}")
+    
+    return file_result
+
+

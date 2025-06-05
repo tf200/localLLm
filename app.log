@@ -656,3 +656,7 @@ FROM files
 2025-05-27 11:15:34,444 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 4, updating n_results = 4
 2025-05-27 11:15:36,889 - openai._base_client - INFO - Retrying request to /chat/completions in 0.401446 seconds
 2025-05-27 11:15:39,592 - openai._base_client - INFO - Retrying request to /chat/completions in 0.856600 seconds
+2025-06-05 11:40:51,329 - logs.logger - ERROR - Error listing files: (sqlite3.OperationalError) no such table: files
+[SQL: SELECT files.id, files.filename, files.path, files.content_type, files.chunk_count, files.upload_time 
+FROM files]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
